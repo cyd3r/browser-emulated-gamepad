@@ -41,6 +41,7 @@ namespace BrowserGamepad
                 app.UseHsts();
             }
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
