@@ -1,0 +1,43 @@
+html, body {
+    height: 100%;
+    /* position: fixed; */
+}
+#left-stick {
+    background-color: khaki;
+    grid-area: ls;
+    position: relative;
+}
+#btn-a {
+    background-color: green;
+    grid-area: a;
+}
+#btn-a.down {
+    background-color: black;
+}
+#btn-b {
+    background-color: red;
+    grid-area: b;
+}
+#btn-b.down {
+    background-color: black;
+}
+#left-stick .centre {
+    background-color: black;
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    position: absolute;
+}
+
+.controls {
+    height: 100%;
+    width: 100%;
+    display: grid;
+
+    grid-template-areas:
+    "ls a"
+    "ls b";
+}
