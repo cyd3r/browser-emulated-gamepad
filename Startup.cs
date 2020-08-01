@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net;
+using System.Net.Sockets;
 using BrowserGamepad.Hubs;
 
 namespace BrowserGamepad
@@ -21,14 +23,26 @@ namespace BrowserGamepad
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSignalR();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        // https://stackoverflow.com/questions/6803073/get-local-ip-address/6803109#comment50034635_6803109
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork && ip.GetAddressBytes()[3] != 1)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime)
         {
             if (env.IsDevelopment())
             {
@@ -51,6 +65,12 @@ namespace BrowserGamepad
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<GamepadHub>("/gamepadHub");
+            });
+
+            lifetime.ApplicationStarted.Register(() => {
+                string address = GetLocalIPAddress();
+                // works only on Windows but so does ViGEmBus
+                System.Diagnostics.Process.Start("cmd", string.Format("/C start http://{0}:5000/?qr", address));
             });
         }
     }

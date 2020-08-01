@@ -3,12 +3,33 @@
 <head>
     <meta charset='utf-8'>
     <title>Phone Gamepad</title>
+    <style>
+        #qr svg {
+            width: 350px;
+            height: auto;
+        }
+        #qr-entry {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h2>Mappings</h2>
-    <ul>
-        <li><a href="unrailed">Unrailed</a></li>
-        <li><a href="escapist">The Escapist 2</a></li>
-    </ul>
+    <section id="qr-entry">
+        <h2>Create a new gamepad</h2>
+        <p>Scan this QR code with your phone to create a new gamepad</p>
+        <div id="qr"></div>
+    </section>
+
+    <section id="mappings">
+        <h2>Mappings</h2>
+        <p>Select one of the following mappings for your gamepad. Not all games require all buttons and axes.</p>
+        <ul>
+            <li><a href="unrailed">Unrailed</a></li>
+            <li><a href="escapist">The Escapist 2</a></li>
+        </ul>
+    </section>
+
+    <script src="/lib/qrcode-generator/qrcode.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
