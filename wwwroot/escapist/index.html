@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Gamepad: Unrailed</title>
+    <title>Gamepad: The Escapist 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="unrailed.css">
+    <link rel="stylesheet" href="escapist.css">
 </head>
 <body>
     <div class="controls">
@@ -13,12 +13,22 @@
             <div class="centre"></div>
             <div class="radius"></div>
         </div>
-        <div id="btn-a"></div>
-        <div id="btn-b"></div>
+
+        <div id="btn-lb" class="btn toprow">LB</div>
+        <div id="btn-rb" class="btn toprow">RB</div>
+        <div id="btn-rightThumb" class="btn toprow">RS</div>
+        <div id="btn-lt" class="btn toprow">LT</div>
+        <div id="btn-rt" class="btn toprow">RT</div>
+
+        <div id="btn-a" class="btn">A</div>
+        <div id="btn-b" class="btn">B</div>
+        <div id="btn-x" class="btn">X</div>
+        <div id="btn-y" class="btn">Y</div>
     </div>
 
     <script src="/lib/signalr/dist/browser/signalr.min.js"></script>
     <script src="/lib/hammerjs/hammer.min.js"></script>
     <script src="/gamepad.js"></script>
+    <script src="escapist.js"></script>
 </body>
 </html>

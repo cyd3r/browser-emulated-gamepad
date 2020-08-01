@@ -1,0 +1,96 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+#stick-left {
+    background-color: khaki;
+    grid-area: ls;
+    position: relative;
+}
+
+#btn-a {
+    background-color: green;
+    grid-area: a;
+}
+#btn-b {
+    background-color: red;
+    grid-area: b;
+}
+#btn-x {
+    background-color: skyblue;
+    grid-area: x;
+}
+#btn-y {
+    background-color: orange;
+    grid-area: y;
+}
+
+.toprow {
+    background-color: grey;
+}
+#btn-rb {
+    grid-area: rb;
+}
+#btn-lb {
+    grid-area: lb;
+}
+#btn-rs {
+    grid-area: rs;
+}
+#btn-lt {
+    grid-area: lt;
+}
+#btn-rt {
+    grid-area: rt;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    touch-action: manipulation;
+
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Safari */
+
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#stick-left .centre, .radius {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    position: absolute;
+}
+#stick-left .centre {
+    background-color: black;
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+}
+#stick-left .radius {
+    border-color: black;
+    border-style: solid;
+    border-radius: 50%;
+}
+
+.controls {
+    height: 100%;
+    width: 100%;
+    display: grid;
+
+    grid-template-areas:
+        "lb rb rs lt rt"
+        "ls ls ls x y"
+        "ls ls ls a b";
+}
+
+.controls div {
+    border-style: solid;
+    border-color: white;
+    border-radius: 1em;
+}
