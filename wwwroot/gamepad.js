@@ -52,6 +52,9 @@ const setupLeftStick = () => {
         return [xNorm, yNorm]
     }
 
+    leftStickElement.addEventListener("touchstart", (e) => {
+        e.preventDefault()
+    })
     const leftStick = new Hammer(leftStickElement, {
         touchAction: "none",
     })
@@ -74,11 +77,16 @@ const setupSlider = () => {
         const element = document.getElementById(`btn-${btn}`)
         new Hammer(element, { touchAction: "none" })
         if (element !== null) {
-            element.addEventListener("pointerdown", () => {
+            element.addEventListener("pointerdown", (e) => {
+                e.preventDefault()
                 connection.invoke("SetSlider", controllerId, btn, 255)
             })
-            element.addEventListener("pointerup", () => {
+            element.addEventListener("pointerup", (e) => {
+                e.preventDefault()
                 connection.invoke("SetSlider", controllerId, btn, 0)
+            })
+            element.addEventListener("touchstart", (e) => {
+                e.preventDefault()
             })
         } else {
             console.log("skip", btn)

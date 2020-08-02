@@ -1,6 +1,8 @@
 html, body {
     height: 100%;
     margin: 0;
+
+    touch-action: manipulation;
 }
 #stick-left {
     background-color: khaki;
